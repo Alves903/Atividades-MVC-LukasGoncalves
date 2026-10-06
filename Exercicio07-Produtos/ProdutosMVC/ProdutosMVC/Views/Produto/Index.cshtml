@@ -1,0 +1,41 @@
+﻿@model List<ProdutosMVC.Models.Produto>
+
+@{
+    ViewData["Title"] = "Produtos";
+}
+
+<h1>Catálogo de Produtos</h1>
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Categoria</th>
+            <th>Estoque</th>
+            <th>Preço</th>
+            <th>Situação</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var produto in Model)
+        {
+            <tr>
+                <td>@produto.Nome</td>
+                <td>@produto.Categoria</td>
+                <td>@produto.Estoque</td>
+                <td>R$ @produto.Preco</td>
+                <td>
+                    @if (produto.Estoque == 0)
+                    {
+                        <span>Produto esgotado</span>
+                    }
+                    else
+                    {
+                        <span>Disponível</span>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

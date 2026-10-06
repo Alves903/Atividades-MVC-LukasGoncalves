@@ -1,0 +1,28 @@
+﻿@model List<BibliotecaMVC.Models.Livro>
+
+@{
+    ViewData["Title"] = "Livros Disponíveis";
+}
+
+<h1>Livros Disponíveis</h1>
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Título</th>
+            <th>Autor</th>
+            <th>Ano</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var livro in Model)
+        {
+            <tr>
+                <td>@livro.Titulo</td>
+                <td>@livro.Autor</td>
+                <td>@livro.Ano</td>
+            </tr>
+        }
+    </tbody>
+</table>

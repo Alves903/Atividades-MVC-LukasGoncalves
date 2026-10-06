@@ -1,0 +1,31 @@
+﻿@model List<CursosMVC.Models.Curso>
+
+@{
+    ViewData["Title"] = "Resumo";
+
+    int totalCursos = Model.Count;
+
+    int disponiveis = Model.Count(c =>
+        c.Vagas > 0);
+
+    int lotados = Model.Count(c =>
+        c.Vagas == 0);
+
+    int online = Model.Count(c =>
+        c.Modalidade == "Online");
+
+    int presenciais = Model.Count(c =>
+        c.Modalidade == "Presencial");
+}
+
+<h1>Resumo dos Cursos</h1>
+
+<p><strong>Total de cursos:</strong> @totalCursos</p>
+
+<p><strong>Cursos disponíveis:</strong> @disponiveis</p>
+
+<p><strong>Cursos lotados:</strong> @lotados</p>
+
+<p><strong>Cursos online:</strong> @online</p>
+
+<p><strong>Cursos presenciais:</strong> @presenciais</p>

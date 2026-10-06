@@ -1,0 +1,60 @@
+﻿@model List<FuncionariosMVC.Models.Funcionario>
+
+@{
+    ViewData["Title"] = "Dashboard";
+
+    int totalFuncionarios = Model.Count;
+
+    int ativos = Model.Count(f =>
+        f.Ativo);
+
+    int inativos = Model.Count(f =>
+        !f.Ativo);
+
+    int ti = Model.Count(f =>
+        f.Departamento == "TI");
+
+    int financeiro = Model.Count(f =>
+        f.Departamento == "Financeiro");
+
+    int rh = Model.Count(f =>
+        f.Departamento == "RH");
+
+    int producao = Model.Count(f =>
+        f.Departamento == "Produção");
+
+    decimal mediaSalarial = Model.Average(f =>
+        f.Salario);
+
+    decimal maiorSalario = Model.Max(f =>
+        f.Salario);
+
+    decimal menorSalario = Model.Min(f =>
+        f.Salario);
+}
+
+<h1>Dashboard</h1>
+
+<p><strong>Total de funcionários:</strong> @totalFuncionarios</p>
+
+<p><strong>Funcionários ativos:</strong> @ativos</p>
+
+<p><strong>Funcionários inativos:</strong> @inativos</p>
+
+<h3>Funcionários por Departamento</h3>
+
+<p><strong>TI:</strong> @ti</p>
+
+<p><strong>Financeiro:</strong> @financeiro</p>
+
+<p><strong>RH:</strong> @rh</p>
+
+<p><strong>Produção:</strong> @producao</p>
+
+<h3>Salários</h3>
+
+<p><strong>Média salarial:</strong> R$ @mediaSalarial.ToString("F2")</p>
+
+<p><strong>Maior salário:</strong> R$ @maiorSalario.ToString("F2")</p>
+
+<p><strong>Menor salário:</strong> R$ @menorSalario.ToString("F2")</p>

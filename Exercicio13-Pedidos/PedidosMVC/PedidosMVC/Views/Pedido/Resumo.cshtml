@@ -1,0 +1,36 @@
+﻿@model List<PedidosMVC.Models.Pedido>
+
+@{
+    ViewData["Title"] = "Resumo";
+
+    int totalPedidos = Model.Count;
+
+    decimal valorTotal = Model.Sum(p =>
+        p.Quantidade * p.PrecoUnitario);
+
+    int recebidos = Model.Count(p =>
+        p.Status == "Recebido");
+
+    int emPreparo = Model.Count(p =>
+        p.Status == "Em preparo");
+
+    int prontos = Model.Count(p =>
+        p.Status == "Pronto");
+
+    int entregues = Model.Count(p =>
+        p.Status == "Entregue");
+}
+
+<h1>Resumo dos Pedidos</h1>
+
+<p><strong>Total de pedidos:</strong> @totalPedidos</p>
+
+<p><strong>Valor total dos pedidos:</strong> R$ @valorTotal</p>
+
+<p><strong>Pedidos recebidos:</strong> @recebidos</p>
+
+<p><strong>Pedidos em preparo:</strong> @emPreparo</p>
+
+<p><strong>Pedidos prontos:</strong> @prontos</p>
+
+<p><strong>Pedidos entregues:</strong> @entregues</p>

@@ -1,0 +1,30 @@
+﻿@model List<FuncionariosMVC.Models.Funcionario>
+
+@{
+    ViewData["Title"] = "Funcionários Ativos";
+}
+
+<h1>Funcionários Ativos</h1>
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Cargo</th>
+            <th>Departamento</th>
+            <th>Salário</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var funcionario in Model)
+        {
+            <tr>
+                <td>@funcionario.Nome</td>
+                <td>@funcionario.Cargo</td>
+                <td>@funcionario.Departamento</td>
+                <td>R$ @funcionario.Salario</td>
+            </tr>
+        }
+    </tbody>
+</table>

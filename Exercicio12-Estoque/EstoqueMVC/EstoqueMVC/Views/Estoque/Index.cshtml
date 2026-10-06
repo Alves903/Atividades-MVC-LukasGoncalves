@@ -1,0 +1,47 @@
+﻿@model List<EstoqueMVC.Models.Produto>
+
+@{
+    ViewData["Title"] = "Estoque";
+}
+
+<h1>Controle de Estoque</h1>
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Categoria</th>
+            <th>Estoque</th>
+            <th>Estoque Mínimo</th>
+            <th>Preço</th>
+            <th>Situação</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var produto in Model)
+        {
+            <tr>
+                <td>@produto.Nome</td>
+                <td>@produto.Categoria</td>
+                <td>@produto.Estoque</td>
+                <td>@produto.EstoqueMinimo</td>
+                <td>R$ @produto.Preco</td>
+                <td>
+                    @if (produto.Estoque == 0)
+                    {
+                        <span>ESGOTADO</span>
+                    }
+                    else if (produto.Estoque <= produto.EstoqueMinimo)
+                    {
+                        <span>ESTOQUE BAIXO</span>
+                    }
+                    else
+                    {
+                        <span>ESTOQUE NORMAL</span>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,30 @@
+﻿@model List<NotasMVC.Models.Aluno>
+
+@{
+    ViewData["Title"] = "Aprovados";
+}
+
+<h1>Alunos Aprovados</h1>
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Aluno</th>
+            <th>Curso</th>
+            <th>Média</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var aluno in Model)
+        {
+            decimal media = (aluno.Nota1 + aluno.Nota2 + aluno.Nota3) / 3;
+
+            <tr>
+                <td>@aluno.Nome</td>
+                <td>@aluno.Curso</td>
+                <td>@media.ToString("F1")</td>
+            </tr>
+        }
+    </tbody>
+</table>

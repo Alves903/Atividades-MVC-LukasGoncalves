@@ -1,0 +1,30 @@
+﻿@model List<EletronicosMVC.Models.Eletronico>
+
+@{
+    ViewData["Title"] = "Periféricos";
+}
+
+<h1>Periféricos</h1>
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Marca</th>
+            <th>Preço</th>
+            <th>Estoque</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var eletronico in Model)
+        {
+            <tr>
+                <td>@eletronico.Nome</td>
+                <td>@eletronico.Marca</td>
+                <td>R$ @eletronico.Preco</td>
+                <td>@eletronico.Estoque</td>
+            </tr>
+        }
+    </tbody>
+</table>

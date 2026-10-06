@@ -1,0 +1,43 @@
+﻿@model List<CursosMVC.Models.Curso>
+
+@{
+    ViewData["Title"] = "Cursos";
+}
+
+<h1>Lista de Cursos</h1>
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Carga Horária</th>
+            <th>Modalidade</th>
+            <th>Vagas</th>
+            <th>Valor</th>
+            <th>Situação</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var curso in Model)
+        {
+            <tr>
+                <td>@curso.Nome</td>
+                <td>@curso.CargaHoraria horas</td>
+                <td>@curso.Modalidade</td>
+                <td>@curso.Vagas</td>
+                <td>R$ @curso.Valor</td>
+                <td>
+                    @if (curso.Vagas > 0)
+                    {
+                        <span>Inscrições abertas</span>
+                    }
+                    else
+                    {
+                        <span>Turma lotada</span>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
